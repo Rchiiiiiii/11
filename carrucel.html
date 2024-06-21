@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Fotos con Carrusel Automático</title>
+    <style>
+        .gallery-container {
+            max-width: 250px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .gallery-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-carousel img {
+            max-width: 500px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gallery-container">
+    <div class="gallery-carousel">
+        <img src="supra.jpeg" alt="Image 1">
+        <img src="Hurac%C3%A1n.jpeg" alt="Image 2">
+        <img src="laferrari.jpeg" alt="Image 1">
+        <img src="BC.jpeg" alt="Image 2">
+    </div>
+</div>
+
+<script>
+    const galleryCarousel = document.querySelector('.gallery-carousel');
+    let currentIndex = 0;
+
+    function moveNext() {
+        const imageWidth = galleryCarousel.querySelector('img').offsetWidth;
+        currentIndex++;
+        if (currentIndex >= galleryCarousel.children.length) {
+            currentIndex = 0;
+        }
+        galleryCarousel.style.transform = `translateX(-${imageWidth * currentIndex}px)`;
+    }
+
+    setInterval(moveNext, 2000); // Mueve automáticamente cada 2 segundos
+</script>
+
+</body>
+</html>
